@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Introducción a la sintaxis para la gestión de errores con clases personalizadas</title>
+    </head>
+    <body>
+    </body>
+
+    <script>
+        //Creamos nuestra clase error personalizada
+        class NuestraWebError extends Error {
+            constructor(mensaje = 'Oops...ha habido un problema'){
+                super (mensaje); // Llamamos al constructor de la clase base (Error) con el mensaje de error
+
+                this.name = 'NuestraWebError';
+            }
+
+        }
+
+        const componenteDelSitioWeb = (función) => {
+            return función();
+        }
+
+        const elementoWeb = () => {
+            return '<div> Hola, ¿qué tal? </div>';
+        }
+
+
+        try {
+            console.log(componenteDelSitioWeb('oops'));
+        } catch (error) { 
+            throw new NuestraWebError (error); //Si no le ponemos argumento manda el mensaje por defecto de la clase --> Oops...ha habido un problema
+        }
+
+
+    </script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lodash Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+  </body>
+
+  <script>
+    //Times function --> toma como argumento un función y el número de veces a iterar 
+    const randomNumber = () => {
+        return Math.round(Math.random() * 100);
+    };
+
+    const muestraNumeros = _.times(10,randomNumber);
+    
+    console.log(muestraNumeros);
+
+    //Filter function
+    const players = [
+      { name: 'Bregman, A',  battingAverage: 0.284 },
+      { name: 'Altuve, J',   battingAverage: 0.346 },
+      { name: 'Springer, G', battingAverage: 0.283 },
+      { name: 'Gurriel, Y',  battingAverage: 0.299 },
+      { name: 'Gonzalez, M', battingAverage: 0.303 }
+    ];
+
+    const over300 = _.filter(players, player => {
+        return player.battingAverage > 0.300
+    });
+
+    console.log(over300);
+
+    //keyBy function
+    const jugadoresAthletic = [
+    { nombre: 'Unai Simón', posicion: 'Portero' },
+    { nombre: 'Yuri Berchiche', posicion: 'Defensa' },
+    { nombre: 'Iker Muniain', posicion: 'Centrocampista' },
+    { nombre: 'Iñaki Williams', posicion: 'Delantero' }
+    ];
+
+    const posiciones = _.keyBy(jugadoresAthletic, 'posicion');
+    
+    const portero = posiciones['Portero'];
+
+    console.log(portero); //Nos devuelve el objeto que se encuentra en el índice generado 'Portero'
+
+    //Reduce function
+    const jugadoresBarsa = [
+    { nombre: 'Lionel Messi', goles: 45 },
+    { nombre: 'Antoine Griezmann', goles: 20 },
+    { nombre: 'Jordi Alba', goles: 5 },
+    { nombre: 'Frenkie de Jong', goles: 10 },
+    { nombre: 'Ansu Fati', goles: 15 }
+    ];
+
+    const golesTotales = _.reduce(jugadoresBarsa, acumulador = (total, jugador) => {
+        return total + jugador.goles; //accedemos al valor de la propiedad 'goles' de cada elemento
+    }, 0);
+
+    console.log(golesTotales); //salida --> 95
+
+    //Reduce function: ejemplo enlaces HTML
+    const links = [
+        'https://google.com',
+        'https://devcamp.com',
+        'https://airbnb.com'
+    ];
+
+    const htmlWebLinks = _.reduce(links, acumulador = (contenido, link) => {
+        return `<a href='${link}'> ${link} </a> <br>`.concat(contenido)
+    },' ');
+
+    console.log(htmlWebLinks);
+
+    //Random
+    const numRandom = () => {
+        return _.random(1,100); //Nos devolverá un número random entre 1 y 100 (ambos incluidos)
+    }
+
+    console.log(numRandom());
+
+
+
+
+
+
+
+
+  </script>
+</html>

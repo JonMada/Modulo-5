@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración de gestión de errores en la llamada a API</title>
+</head>
+<body>
+</body>
+
+<script>
+    //Creamos nuestra clase para crear un Error personalizado
+    class ErrorApi extends Error {
+        constructor(mensaje = 'Ha habido un error al conectar con la API') {
+        super(mensaje);
+        this.name = 'APIError'
+   }}
+
+    //Realizamos nuestra petición
+    const consulta = new XMLHttpRequest();
+
+    consulta.open('GET', 'https://swapi.dev/api/people', true); //Modificamos la url para probar el error people por peple
+
+    //Implementamos la función de carga de los datos de nuestra petición
+    consulta.onload = function () {
+        if(consulta.status >= 200 && consulta.status < 400) { //Representan código de estado de la consulta --> significa que han funcionado, aunque no sea perfectamente
+            const data = JSON.parse(consulta.responseText); 
+            console.log(data);
+        } else {
+            throw new ErrorApi (`Ha habido un problema al conectar con la API con el status siguiente ${consulta.status}`);
+        }
+    }
+
+    //Probamos nuestra consulta 
+    consulta.send();
+
+
+</script>
+</html>

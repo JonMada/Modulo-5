@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Introducción a la sintaxis para la gestión de errores</title>
+    </head>
+    <body>
+    </body>
+
+    <script>
+        //Creamos una función simple que llama a otra función
+        const componenteDelSitioWeb = (función) => {
+            return función();
+        }
+
+        //Creamos nuestro función que representa un elemento de nuestro sitio web.
+        const elementoWeb = () => {
+            return '<div> Hola, ¿qué tal? </div>';
+        }
+
+        //Aplicamos nuestras funciones
+        console.log(componenteDelSitioWeb(elementoWeb));
+
+        //Imaginemos que ahora introducimos como argumento una string, cuando en realidad debería ser una función
+        //Si queremos gestionar el error utilizaremos las palabras clave try and catch
+        try {
+            console.log(componenteDelSitioWeb('oops'));
+        } catch (error) { //'error' alamcena  el  error lanzado. Solo se activa si se lanza un error
+            console.log('Ha habido un problema con la función componentesDelSitioWeb', error);
+        }
+
+
+    </script>
+</html>
