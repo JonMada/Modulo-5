@@ -177,7 +177,7 @@ class Acompañamientos {
                     console.log(this.menus.menuAcompañamientos.comentarios[this.indiceAcompañamiento]);
                     console.log(`El precio de este plato es de ${this.menus.menuAcompañamientos.precios[this.indiceAcompañamiento]} euros.`);
                 } else {
-                    throw new ErrorPlatosAcompañamientono();
+                    throw new ErrorPlatosAcompañamiento();
                 }                                                                    
         
             } catch (error) {
