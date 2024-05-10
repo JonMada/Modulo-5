@@ -307,7 +307,7 @@ const mostrarMenus = () => {
                 alert ( `Esto es la cuenta total a pagar: \n 
                 ${productos[0]} --> ${precios[0]} \n
                 ${productos[1]} --> ${precios[1]} \n
-                Total: ${cuenta}) euros.`);
+                Total: ${cuenta} euros.`);
             } else {
                 alert ( `Esto es la cuenta total a pagar: \n 
                 ${productos[0]} --> ${precios[0]} \n
