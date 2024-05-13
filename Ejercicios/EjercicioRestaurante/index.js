@@ -169,6 +169,18 @@ class ErrorPlatos extends Error {
 var productosSeleccionados = [];
 var precioTotal = [];
 
+//Mensajes
+var mensajeDesayuno1;
+var mensajeDesayuno2;
+
+var mensajeComida1;
+var mensajeComida2;
+var mensajeComida3;
+
+var mensajeCena1;
+var mensajeCena2;
+var mensajeCena3;
+
 //Preguntamos a nuestro cliente si quiere ver el menú
 var respuestaInicial;
 respuestaInicial = prompt('¡Bienvenido a nuestro restaurante! ¿Te gustaría ver los menús de los que disponemos? Responde si/no: ');
@@ -183,27 +195,44 @@ const mostrarMenus = () => {
             //Plato para el desayuno
             alert('¡Hora del desayuno! Aquí te muestro los platos del desayuno');
 
-            var platosDesayuno = "";
-            for (let plato of menuDesayuno.menuPrincipal.platos) {
-                platosDesayuno += plato + "\n"; 
+
+            function mostrarPlatosDesayuno () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menuDesayuno.menuPrincipal.platos[i]} --> ${menuDesayuno.menuPrincipal.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menuDesayuno.menuPrincipal.platos.length)
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione uno de los platos:\n${platosDesayuno}`;
+            mensajeDesayuno1 = `\n ${mostrarPlatosDesayuno()}`;
+        
             
-            const respuestaPlatoDesayuno = prompt(mensaje.toLowerCase());
+            const respuestaPlatoDesayuno = prompt(`Seleccione uno de los platos: ${mensajeDesayuno1}`).toLowerCase();
 
             seleccionarPlatoDesayuno (respuestaPlatoDesayuno);
 
             //Bebida para el desayuno
             alert('A continuación, seleccione la bebida que prefiera para acompañar con su desayuno');
 
-            var todasBebidasDesayuno = '';
-            for (let bebida of menuDesayuno.menuBebidas.bebidasDesayuno) {
-                todasBebidasDesayuno += bebida + "\n"; 
+            function mostrarBebidasDesayuno () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menuDesayuno.menuBebidas.bebidasDesayuno[i]} --> ${menuDesayuno.menuBebidas.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menuDesayuno.menuBebidas.bebidasDesayuno.length)
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione una de las bebidas:\n${todasBebidasDesayuno}`;
-            const respuestaBebidaDesayuno = prompt(mensaje.toLowerCase());
+            mensajeDesayuno2 = `\n ${mostrarBebidasDesayuno()}`;
+        
+            const respuestaBebidaDesayuno = prompt(`Seleccione una de las bebidas: ${mensajeDesayuno2}`).toLowerCase();
 
             seleccionarBebidaDesayuno (respuestaBebidaDesayuno);
         }
@@ -213,41 +242,62 @@ const mostrarMenus = () => {
             //Plato para la comida
             alert('¡Hora de comer! Aquí tiene los platos principales para la comida');
 
-            var platosComida = "";
-            for (let plato of menusTardeNoche.menuPrincipal.platos) {
-                platosComida += plato + "\n"; 
+            function mostrarPlatosComida () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuPrincipal.platos[i]} --> ${menusTardeNoche.menuPrincipal.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuPrincipal.platos.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione uno de los platos:\n${platosComida}`;
-            
-            const respuestaPlatoComida = prompt(mensaje.toLowerCase());
-
+            mensajeComida1 = `\n ${mostrarPlatosComida()}`;
+        
+            const respuestaPlatoComida = prompt(`Seleccione uno de los platos principales: ${mensajeComida1}`).toLowerCase();
             seleccionarPlatoComida (respuestaPlatoComida);
 
             //Plato de acompañamiento
             alert('Para seguir, le muestro los acompañamientos para la comida');
 
-            var acompañamientosComida = "";
-            for (let plato of menusTardeNoche.menuAcompañamientos.platos) {
-                acompañamientosComida += plato + "\n"; 
+            function mostrarAcompañamientoComida () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuAcompañamientos.platos[i]} --> ${menusTardeNoche.menuAcompañamientos.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuAcompañamientos.platos.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione uno de los platos:\n${acompañamientosComida}`;
-            
-            const respuestaAcompañamientoComida = prompt(mensaje.toLowerCase());
+            mensajeComida2 = `\n ${mostrarAcompañamientoComida()}`;
+        
+            const respuestaAcompañamientoComida = prompt(`Seleccione uno de los acompañamientos: ${mensajeComida2}`).toLowerCase();
 
             seleccionarAcompañamientoComida (respuestaAcompañamientoComida);
 
             //Bebida para la comida 
             alert('A continuación, seleccione la bebida que prefiera para acompañar con su comida');
 
-            var todasBebidasComida = '';
-            for (let bebida of menusTardeNoche.menuBebidas.bebidas) {
-                todasBebidasComida += bebida + "\n"; 
+            function mostrarBebidaComida () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuBebidas.bebidas[i]} --> ${menusTardeNoche.menuBebidas.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuBebidas.bebidas.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione una de las bebidas:\n${todasBebidasComida}`;
-            const respuestaBebidaComida = prompt(mensaje.toLowerCase());
+            mensajeComida3 = `\n ${mostrarBebidaComida()}`;
+        
+            const respuestaBebidaComida = prompt(`Seleccione una de las bebidas: ${mensajeComida3}`).toLowerCase();
 
             seleccionarBebidaComida (respuestaBebidaComida);
         }
@@ -257,42 +307,62 @@ const mostrarMenus = () => {
             //Plato para la cena
             alert('¡Hora de cenar! Aquí tiene los platos principales para la cena');
 
-            var platosCena = "";
-            for (let plato of menusTardeNoche.menuPrincipal.platos) {
-                platosCena += plato + "\n"; 
+            function mostrarPlatosCena () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuPrincipal.platos[i]} --> ${menusTardeNoche.menuPrincipal.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuPrincipal.platos.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione uno de los platos:\n${platosCena}`;
-            
-            const respuestaPlatoCena = prompt(mensaje.toLowerCase());
+            mensajeCena1 = `\n ${mostrarPlatosCena()}`;
+        
+            const respuestaPlatoCena = prompt(`Seleccione uno de los platos principales: ${mensajeCena1}`).toLowerCase();
 
             seleccionarPlatoCena (respuestaPlatoCena);
 
             //Plato de acompañamiento
             alert('Para seguir, le muestro los acompañamientos para su cena');
 
-            var acompañamientosCena = "";
-            for (let plato of menusTardeNoche.menuAcompañamientos.platos) {
-                acompañamientosCena += plato + "\n"; 
+            function mostrarAcompañamientoCena () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuAcompañamientos.platos[i]} --> ${menusTardeNoche.menuAcompañamientos.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuAcompañamientos.platos.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione uno de los platos:\n${acompañamientosCena}`;
-            
-            const respuestaAcompañamientoCena = prompt(mensaje.toLowerCase());
-
+            mensajeCena2 = `\n ${mostrarAcompañamientoCena()}`;
+        
+            const respuestaAcompañamientoCena = prompt(`Seleccione uno de los acompañamientos: ${mensajeCena2}`).toLowerCase();
             seleccionarAcompañamientoCena (respuestaAcompañamientoCena);
 
             //Bebida para la cena
             alert('A continuación, seleccione la bebida que prefiera para acompañar con su cena');
 
-            var todasBebidasCena = '';
-            for (let bebida of menusTardeNoche.menuBebidas.bebidas) {
-                todasBebidasCena += bebida + "\n"; 
+            function mostrarBebidaCena () {
+                let i = 0;
+                var mensajeMenú = '';
+
+                do {
+                    mensajeMenú += `${menusTardeNoche.menuBebidas.bebidas[i]} --> ${menusTardeNoche.menuBebidas.precios[i]} euros \n`;
+                    i ++;
+                } while (i < menusTardeNoche.menuBebidas.bebidas.length);
+
+                return mensajeMenú;
             }
 
-            var mensaje = `Seleccione una de las bebidas:\n${todasBebidasCena}`;
-            const respuestaBebidaCena = prompt(mensaje.toLowerCase());
-
+            mensajeCena3= `\n ${mostrarBebidaCena()}`;
+        
+            const respuestaBebidaCena = prompt(`Seleccione una de las bebidas: ${mensajeCena3}`).toLowerCase();
             seleccionarBebidaCena (respuestaBebidaCena);   
         }
 
@@ -305,15 +375,15 @@ const mostrarMenus = () => {
 
             if (productos.length === 2) {
                 alert ( `Esto es la cuenta total a pagar: \n 
-                ${productos[0]} --> ${precios[0]} \n
-                ${productos[1]} --> ${precios[1]} \n
+                ${productos[0]} --> ${precios[0]} € \n
+                ${productos[1]} --> ${precios[1]} € \n
                 Total: ${cuenta} euros.`);
             } else {
                 alert ( `Esto es la cuenta total a pagar: \n 
-                ${productos[0]} --> ${precios[0]} \n
-                ${productos[1]} --> ${precios[1]} \n
-                ${productos[2]} --> ${precios[2]} \n
-                Total:  ${cuenta} euros.`);
+                ${productos[0]} --> ${precios[0]} € \n
+                ${productos[1]} --> ${precios[1]} € \n
+                ${productos[2]} --> ${precios[2]} € \n
+                \n Total:  ${cuenta} euros.`);
             }
         }
 
@@ -354,7 +424,7 @@ function seleccionarPlatoDesayuno (platoDesayunoSeleccionado) {
     do {
         try {
             var platos = menuDesayuno.menuPrincipal.platos.map(plato => plato.toLowerCase());
-            if (platos.includes(platoDesayunoSeleccionado.toLowerCase())) {
+            if (platos.includes(platoDesayunoSeleccionado)) {
                 indicePrincipal = platos.indexOf(platoDesayunoSeleccionado);
                 alert(`¡Ha seleccionado ${platoDesayunoSeleccionado}! ${menuDesayuno.menuPrincipal.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(platoDesayunoSeleccionado);
@@ -366,8 +436,8 @@ function seleccionarPlatoDesayuno (platoDesayunoSeleccionado) {
         
         } catch (error) {
             alert(error.message);
-            platoDesayunoSeleccionado = prompt('Disculpe, seleccione uno de los platos disponibles en el menú:\n' + platos.join('\n')).toLowerCase();
-            
+            platoDesayunoSeleccionado = prompt(`Disculpe, seleccione uno de los platos disponibles en el menú: ${mensajeDesayuno1}`);
+            platoDesayunoSeleccionado= platoDesayunoSeleccionado.toLowerCase();
         } 
 
     } while(indicePrincipal === null);
@@ -381,7 +451,7 @@ function seleccionarBebidaDesayuno (bebidaDesayunoSeleccionada) {
     do {
         try {
             var bebidas = menuDesayuno.menuBebidas.bebidasDesayuno.map(bebida => bebida.toLowerCase());
-            if (bebidas.includes(bebidaDesayunoSeleccionada.toLowerCase())) {
+            if (bebidas.includes(bebidaDesayunoSeleccionada)) {
                 indicePrincipal = bebidas.indexOf(bebidaDesayunoSeleccionada);
                 alert(`¡Ha seleccionado ${bebidaDesayunoSeleccionada}! ${menuDesayuno.menuBebidas.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(bebidaDesayunoSeleccionada); 
@@ -393,7 +463,8 @@ function seleccionarBebidaDesayuno (bebidaDesayunoSeleccionada) {
         
         } catch (error) {
             alert(error.message);
-            bebidaDesayunoSeleccionada = prompt('Disculpe, seleccione uno de las bebidas disponibles en el menú:\n' + bebidas.join('\n')).toLowerCase();
+            bebidaDesayunoSeleccionada = prompt(`Disculpe, seleccione una de las bebidas disponibles en el menú: ${mensajeDesayuno2}`);
+            bebidaDesayunoSeleccionada = bebidaDesayunoSeleccionada.toLowerCase();
             
         } 
 
@@ -409,7 +480,7 @@ function seleccionarPlatoComida  (platoComidaSeleccionado) {
     do {
         try {
             var platos = menusTardeNoche.menuPrincipal.platos.map(plato => plato.toLowerCase());
-            if (platos.includes(platoComidaSeleccionado.toLowerCase())) {
+            if (platos.includes(platoComidaSeleccionado)) {
                 indicePrincipal = platos.indexOf(platoComidaSeleccionado);
                 alert(`¡Ha seleccionado ${platoComidaSeleccionado}! ${menusTardeNoche.menuPrincipal.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(platoComidaSeleccionado);
@@ -421,7 +492,8 @@ function seleccionarPlatoComida  (platoComidaSeleccionado) {
         
         } catch (error) {
             alert(error.message);
-            platoComidaSeleccionado = prompt('Disculpe, seleccione uno de los platos disponibles en el menú:\n' + platos.join('\n')).toLowerCase();
+            platoComidaSeleccionado = prompt(`Disculpe, seleccione uno de los platos disponibles en el menú: ${mensajeComida1}`);
+            platoComidaSeleccionado.toLowerCase();
             
         } 
 
@@ -435,7 +507,7 @@ function  seleccionarAcompañamientoComida (acompañamientoComidaSeleccionado) {
     do {
         try {
             var platos = menusTardeNoche.menuAcompañamientos.platos.map(plato => plato.toLowerCase());
-            if (platos.includes(acompañamientoComidaSeleccionado.toLowerCase())) {
+            if (platos.includes(acompañamientoComidaSeleccionado)) {
                 indicePrincipal = platos.indexOf(acompañamientoComidaSeleccionado);
                 alert(`¡Ha seleccionado ${acompañamientoComidaSeleccionado}! ${menusTardeNoche.menuAcompañamientos.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(acompañamientoComidaSeleccionado);
@@ -447,7 +519,8 @@ function  seleccionarAcompañamientoComida (acompañamientoComidaSeleccionado) {
         
         } catch (error) {
             alert(error.message);
-            acompañamientoComidaSeleccionado = prompt('Disculpe, seleccione uno de los platos disponibles en el menú:\n' + platos.join('\n')).toLowerCase();
+            acompañamientoComidaSeleccionado = prompt(`Disculpe, seleccione uno de los acompañamientos disponibles en el menú: ${mensajeComida2}`);
+            acompañamientoComidaSeleccionado =  acompañamientoComidaSeleccionad.toLowerCase();
             
         } 
 
@@ -460,7 +533,7 @@ function seleccionarBebidaComida (bebidaComidaSeleccionada) {
     do {
         try {
             var bebidas = menusTardeNoche.menuBebidas.bebidas.map(bebida=> bebida.toLowerCase());
-            if (bebidas.includes(bebidaComidaSeleccionada.toLowerCase())) {
+            if (bebidas.includes(bebidaComidaSeleccionada)) {
                 indicePrincipal = bebidas.indexOf(bebidaComidaSeleccionada);
                 alert(`¡Ha seleccionado ${bebidaComidaSeleccionada}! ${menusTardeNoche.menuBebidas.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(bebidaComidaSeleccionada);
@@ -472,7 +545,8 @@ function seleccionarBebidaComida (bebidaComidaSeleccionada) {
         
         } catch (error) {
             alert(error.message);
-            bebidaComidaSeleccionada = prompt('Disculpe, seleccione una de las bebidas disponibles en el menú:\n' + bebidas.join('\n')).toLowerCase();
+            bebidaComidaSeleccionada = prompt(`Disculpe, seleccione una de las bebidas disponibles en el menú: ${mensajeComida3}`);
+            bebidaComidaSeleccionada = bebidaComidaSeleccionada.toLowerCase();
             
         } 
 
@@ -488,7 +562,7 @@ function seleccionarPlatoCena  (platoCenaSeleccionado) {
     do {
         try {
             var platos = menusTardeNoche.menuPrincipal.platos.map(plato => plato.toLowerCase());
-            if (platos.includes(platoCenaSeleccionado.toLowerCase())) {
+            if (platos.includes(platoCenaSeleccionado)) {
                 indicePrincipal = platos.indexOf(platoCenaSeleccionado);
                 alert(`¡Ha seleccionado ${platoCenaSeleccionado}! ${menusTardeNoche.menuPrincipal.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(platoCenaSeleccionado);
@@ -500,8 +574,8 @@ function seleccionarPlatoCena  (platoCenaSeleccionado) {
         
         } catch (error) {
             alert(error.message);
-            platoCenaSeleccionado = prompt('Disculpe, seleccione uno de los platos disponibles en el menú:\n' + platos.join('\n')).toLowerCase();
-            
+            platoCenaSeleccionado = prompt(`Disculpe, seleccione uno de los platos disponibles en el menú: ${mensajeCena1}`);
+            platoCenaSeleccionado.toLowerCase();
         } 
 
     } while(indicePrincipal === null);
@@ -515,7 +589,7 @@ function  seleccionarAcompañamientoCena (acompañamientoCenaSeleccionado) {
     do {
         try {
             var platos = menusTardeNoche.menuAcompañamientos.platos.map(plato => plato.toLowerCase());
-            if (platos.includes(acompañamientoCenaSeleccionado.toLowerCase())) {
+            if (platos.includes(acompañamientoCenaSeleccionado)) {
                 indicePrincipal = platos.indexOf(acompañamientoCenaSeleccionado);
                 alert(`¡Ha seleccionado ${acompañamientoCenaSeleccionado}! ${menusTardeNoche.menuAcompañamientos.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(acompañamientoCenaSeleccionado);
@@ -527,8 +601,8 @@ function  seleccionarAcompañamientoCena (acompañamientoCenaSeleccionado) {
         
         } catch (error) {
             alert(error.message);
-            acompañamientoCenaSeleccionado = prompt('Disculpe, seleccione uno de los platos disponibles en el menú:\n' + platos.join('\n')).toLowerCase();
-            
+            acompañamientoCenaSeleccionado = prompt(`Disculpe, seleccione uno de los acompañamientos disponibles en el menú: ${mensajeCena2}`);
+            acompañamientoCenaSeleccionado =  acompañamientoCenaSeleccionado.toLowerCase();
         } 
 
     } while(indicePrincipal === null);
@@ -540,7 +614,7 @@ function seleccionarBebidaCena (bebidaCenaSeleccionada) {
     do {
         try {
             var bebidas = menusTardeNoche.menuBebidas.bebidas.map(bebida=> bebida.toLowerCase());
-            if (bebidas.includes(bebidaCenaSeleccionada.toLowerCase())) {
+            if (bebidas.includes(bebidaCenaSeleccionada)) {
                 indicePrincipal = bebidas.indexOf(bebidaCenaSeleccionada);
                 alert(`¡Ha seleccionado ${bebidaCenaSeleccionada}! ${menusTardeNoche.menuBebidas.comentarios[indicePrincipal]}`);
                 productosSeleccionados.push(bebidaCenaSeleccionada);
@@ -552,7 +626,8 @@ function seleccionarBebidaCena (bebidaCenaSeleccionada) {
         
         } catch (error) {
             alert(error.message);
-            bebidaCenaSeleccionada = prompt('Disculpe, seleccione una de las bebidas disponibles en el menú:\n' + bebidas.join('\n')).toLowerCase();
+            bebidaCenaSeleccionada = prompt(`Disculpe, seleccione una de las bebidas disponibles en el menú: ${mensajeCena3}`);
+            bebidaCenaSeleccionada = bebidaCenaSeleccionada.toLowerCase();
             
         } 
 
